@@ -1,21 +1,51 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+// ************************************
+// App.js
+// ************************************
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import ScreenOne from "./screens/ScreenOne";
+import ScreenTwo from "./screens/ScreenTwo";
+import ScreenThree from "./screens/ScreenThree";
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen
+          name="ScreenOne"
+          component={ScreenOne}
+          options={{
+            tabBarLabel: "Screen 1",
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="cellphone-screenshot" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="ScreenTwo"
+          component={ScreenTwo}
+          options={{
+            tabBarLabel: "Screen 2",
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="cellphone-screenshot" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="ScreenThree"
+          component={ScreenThree}
+          options={{
+            tabBarLabel: "Screen 3",
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="cellphone-screenshot" size={size} color={color} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
