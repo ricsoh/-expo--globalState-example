@@ -8,10 +8,10 @@ import { useIsFocused } from '@react-navigation/native'; // useIsFocus to render
 
 export default function ScreenTwo() {
     const [localCount, setLocalCount] = useState(0);
+    const isFocus = useIsFocused(); // Re-rendering screen, this will ensure global state updated with latest
 
     return (
         <View style={styles.container}>
-            {useIsFocused() /* Re-rendering screen */}
             <Text style={{ color: 'red', fontSize: 30, fontWeight: 'bold', marginBottom: 10 }} >Global Count</Text>
             <Text style={{ color: 'red', fontSize: 30, marginBottom: 10 }} >{getGlobalStateCount("")}</Text>
             <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 10 }} >Local Count</Text>
